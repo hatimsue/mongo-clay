@@ -1,0 +1,25 @@
+{
+  "name": "mongo-clay",
+  "version": "1.0.0",
+  "description": "this project will be a module of functions to allow acces to a mongo db and do CRUD Actions ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hatimsue/mongo-clay.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongo-clay",
+    "crude",
+    "nodejs"
+  ],
+  "author": "hatimsue <hatimsue@gmail.com> (https://github.com/hatimsue/mongo-clay)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hatimsue/mongo-clay/issues"
+  },
+  "homepage": "https://github.com/hatimsue/mongo-clay#readme"
+}
