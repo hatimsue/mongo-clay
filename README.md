@@ -1,17 +1,19 @@
 # mongo-clay
 this project will be a module  of functions to allow acces to a mongo db and do CRUD Actions
-	How to install
+##How to install
 
-		npm install mongodb 
-		npm install mongo-clay
+npm install mongodb 
+npm install mongo-clay
 
-	How to use
+##How to use
 	
-		var clay=require('mongo-clay');
-		//set DB 
-		clay.set('mongodb://localhost:27017/','dbName');
-		//set collection
-		var myCollection=clay.Collection('collectionName');
+```javascript
+var clay=require('mongo-clay');
+//set DB 
+clay.set('mongodb://localhost:27017/','dbName');
+//set collection
+var myCollection=clay.Collection('collectionName');
+```
 	
 	Insert Document
 
