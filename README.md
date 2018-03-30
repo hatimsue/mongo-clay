@@ -3,6 +3,7 @@ This project will be a module  of functions to allow acces to a mongo db and mak
 ## Install
 
 npm install mongodb 
+
 npm install mongo-clay
 
 ## How to use
