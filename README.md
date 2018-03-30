@@ -8,7 +8,7 @@ this project will be a module  of functions to allow acces to a mongo db and do 
 	How to use
 	
 		var clay=require('mongo-clay');
-	    //set DB 
+		//set DB 
 		clay.set('mongodb://localhost:27017/','dbName');
 		//set collection
 		var myCollection=clay.Collection('collectionName');
