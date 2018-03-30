@@ -53,11 +53,11 @@ clay.update('collectionName',{email:'example@example.com'},{age:18},(result)=>{
 
 ### Remove Documents
 ```javascript	
-myCollection.remove({{email:'example@example.com'},(result)=>{
+myCollection.remove({email:'example@example.com'},(result)=>{
 	console.log(result);
 });
 //or
-clay.remove('collectionName',{{email:'example@example.com'},(result)=>{
+clay.remove('collectionName',{email:'example@example.com'},(result)=>{
 	console.log(result);
 });
 
