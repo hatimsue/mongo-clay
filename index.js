@@ -1,109 +1,110 @@
-"use strict";
-var crude = require('./crude.js');
+/* eslint-disable no-dupe-class-members */
+'use strict'
+var crude = require('./crude.js')
 
 class Clay{
 	constructor(){
 
 	}
 	get set(){
-		return this.set;
+		return this.set
 	}
 	get Collection(){
-		return this.Collection;
+		return this.Collection
 	}
 	get find(){
-		return this.find;
+		return this.find
 	}
 	get update(){
-		return this.update;
+		return this.update
 	}
 	get remove(){
-		return this.remove;
+		return this.remove
 	}
 	get aggregate(){
-		return this.aggregate;
+		return this.aggregate
 	}
 	get count(){
-		return this.count;
+		return this.count
 	}
 	set(dbUrl,dbName){
-		this.dbUrl=dbUrl;
-		this.dbName=dbName;
+		this.dbUrl=dbUrl
+		this.dbName=dbName
 	}
 	Collection(modelName){
 		if(this.dbUrl&&this.dbName){
-			let self=this;
+			let self=this
 			return class{
 				constructor(){
-					this.name=modelName;
+					this.name=modelName
 				}
 				get save(){
-					return this.save;
+					return this.save
 				}
 				save(callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
 						crude.insertDocument(db,modelName,this,(result)=>{
 							if(callback){
-								callback(result);
+								callback(result)
 							}
-							client.close();
-						});
-					});
+							client.close()
+						})
+					})
 				}
 				static find(key,projection,callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
 						crude.findDocuments(db,modelName,key,projection,(docs)=>{
 							if(callback){
-								callback(docs);
+								callback(docs)
 							}
-							client.close();
-						});
-					});
+							client.close()
+						})
+					})
 				}
 				static update(key,newKey,callback){
-						crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-							crude.updateDocument(db,modelName,key,newKey,(result)=>{
-								if(callback){
-									callback(result);
-								}
-								client.close();
-							});
-						});
+					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
+						crude.updateDocument(db,modelName,key,newKey,(result)=>{
+							if(callback){
+								callback(result)
+							}
+							client.close()
+						})
+					})
 				}
 				static remove(key,callback){
-						crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-							crude.removeDocument(db,modelName,key,(result)=>{
-								if(callback){
-									callback(result);
-								}
-								client.close();
-							});
-						});
+					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
+						crude.removeDocument(db,modelName,key,(result)=>{
+							if(callback){
+								callback(result)
+							}
+							client.close()
+						})
+					})
 				}
 				static aggregate(match,group,callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
 						crude.removeDocument(db,modelName,match,group,(docs)=>{
 							if(callback){
-								callback(docs);
+								callback(docs)
 							}
-							client.close();
-						});
-					});
+							client.close()
+						})
+					})
 				}
 				static count(key,callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
 						crude.countDocuments(db,modelName,key,(count)=>{
 							if(callback){
-								callback(count);
+								callback(count)
 							}
-							console.log(count+'no se que pasa');
-							client.close();
-						});
-					});
+							console.log(count+'no se que pasa')
+							client.close()
+						})
+					})
 				}
 			}
 		}else{
-			return false;
+			return false
 		}
 	}
 	find(collectionName,key,projection,callback){
@@ -111,11 +112,11 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.findDocuments(db,collectionName,key,projection,(docs)=>{
 					if(callback){
-						callback(docs);
+						callback(docs)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
 	update(collectionName,key,newKey,callback){
@@ -123,11 +124,11 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.updateDocument(db,collectionName,key,newKey,(result)=>{
 					if(callback){
-						callback(result);
+						callback(result)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 
 	}
@@ -136,11 +137,11 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.removeDocument(db,collectionName,key,(result)=>{
 					if(callback){
-						callback(result);
+						callback(result)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
 	aggregate(collectionName,match,group,callback){
@@ -148,11 +149,11 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.removeDocument(db,collectionName,match,group,(docs)=>{
 					if(callback){
-						callback(docs);
+						callback(docs)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
 	count(collectionName,key,callback){
@@ -160,12 +161,12 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.countDocuments(db,collectionName,key,(count)=>{
 					if(callback){
-						callback(count);
+						callback(count)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
 }
-module.exports=new Clay();
+module.exports=new Clay()
