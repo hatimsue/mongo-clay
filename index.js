@@ -36,7 +36,6 @@ class Clay{
 			let self=this
 			return class{
 				constructor(){
-					this.name=modelName
 				}
 				get save(){
 					return this.save
