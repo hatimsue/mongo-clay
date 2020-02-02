@@ -38,6 +38,36 @@ clay.find('collectionName',{age:17},{},(docs)=>{
 });
 ```
 
+### Projections 
+```javascript
+let projection = {name:1};
+myCollection.find({age:17},projection,(docs)=>{
+	console.log(docs);
+});
+//or
+clay.find('collectionName',{age:17},projection,(docs)=>{
+	console.log(docs);
+});
+```
+
+### Aggregation
+```javascript
+let rules=[
+	{ '$match': {
+		'age': { '$gte': 20, '$lte': 30 }
+	}},
+	{ '$group': {
+		'_id': '$email'
+	}}];
+myCollection.aggregate(rules,(docs)=>{
+	console.log(docs);
+});
+//or
+clay.aggregate('collectionName',rules,(docs)=>{
+	console.log(docs);
+});
+```
+
 ### Update Documents
 
 ```javascript
