@@ -14,7 +14,7 @@
 
 var MongoClient = require('mongodb').MongoClient
 var connection=function(dbUrl,dbName,callback){
-	MongoClient.connect(dbUrl,(err,client)=>{
+	MongoClient.connect(dbUrl,{ useUnifiedTopology: true},(err,client)=>{
 		if(err) throw err
 		console.log('data base is conected ')
 		const db = client.db(dbName)
@@ -34,9 +34,11 @@ var findDocuments=function(db, coll,key,projection,callback){
 		key._id=new require('mongodb').ObjectId(key._id)
 	}
 	var collection=db.collection(coll)
-	collection.find(key,projection).toArray(function(err,docs){
+	collection.find(key).project(projection).toArray(function(err,docs){
+	//collection.find(key,projection).toArray(function(err,docs){
 		if(err) throw err
 		console.log('findDocuments method has been called')
+		console.log(projection)
 		callback(docs)
 	})
 }
