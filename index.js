@@ -80,9 +80,9 @@ class Clay{
 						})
 					})
 				}
-				static aggregate(match,group,callback){
+				static aggregate(rules,callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-						crude.removeDocument(db,modelName,match,group,(docs)=>{
+						crude.aggregateDocuments(db,modelName,rules,(docs)=>{
 							if(callback){
 								callback(docs)
 							}
@@ -143,10 +143,10 @@ class Clay{
 			})
 		}
 	}
-	aggregate(collectionName,match,group,callback){
+	aggregate(collectionName,rules,callback){
 		if(this.dbUrl&&this.dbName){
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
-				crude.removeDocument(db,collectionName,match,group,(docs)=>{
+				crude.aggregateDocuments(db,collectionName,rules,(docs)=>{
 					if(callback){
 						callback(docs)
 					}

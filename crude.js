@@ -68,12 +68,15 @@ var removeDocument=function(db,coll,key,callback){
 		callback(result)
 	})
 }
-var aggregateDocuments=function(db,coll,match,group,callback){
+var aggregateDocuments=function(db,coll,rules,callback){
 	var collection=db.collection(coll)
-	collection.aggregate([match,group]).toArray(function(err,docs){
+	collection.aggregate(rules,function(err, cursor) {
 		if(err) throw err
-		console.log(docs)
-		callback(docs)
+		cursor.toArray(function(err, docs) {
+			
+			console.log(docs)
+			callback(docs)
+		})
 	})
 }
 var countDocuments=function(db,coll,key,callback){
