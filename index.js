@@ -9,7 +9,7 @@ class Clay{
 	get set(){
 		return this.set
 	}
-	get Collection(){
+	get collection(){
 		return this.Collection
 	}
 	get find(){
@@ -31,18 +31,29 @@ class Clay{
 		this.dbUrl=dbUrl
 		this.dbName=dbName
 	}
-	Collection(modelName){
+	collection(modelName){
 		if(this.dbUrl&&this.dbName){
 			let self=this
 			return class{
-				constructor(){
+				constructor(data){
+					this.collection=modelName
+					this.data=(data && typeof data == 'object')?data:{}
 				}
 				get save(){
 					return this.save
 				}
+				setData(data){
+					for(var a in data){
+						this.data[a]= data[a]
+					}
+				}
+				getData(){
+					return this.data
+				}
 				save(callback){
+					
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-						crude.insertDocument(db,modelName,this,(result)=>{
+						crude.insertDocument(db,modelName,this.data,(result)=>{
 							if(callback){
 								callback(result)
 							}
