@@ -1,6 +1,6 @@
 {
   "name": "mongo-clay",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "this project will be a module of functions to allow acces to a mongo db and do CRUD Actions ",
   "main": "index.js",
   "scripts": {
