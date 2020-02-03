@@ -19,11 +19,25 @@ var myCollection=clay.Collection('collectionName');
 ```javascript
 var myDocument=new myCollection();
 
-myDocument.name='Jhon';
-myDocument.age=17;
-myDocument.email='example@example.com'
+myDocument.setData({name:'Jhon'});
+myDocument.setData({age:17});
+myDocument.setData({email:'example@example.com'});
 
-myDocument.save();
+myDocument.save((result)=>{
+	console.log(result)
+});
+
+//or
+
+let data = {
+	name:'Jhon',
+	age:17,
+	email:'example@example.com'
+}
+var myDocument=new myCollection(data);
+myDocument.save((result)=>{
+	console.log(result)
+})
 ```
 
 ### Find Documents
