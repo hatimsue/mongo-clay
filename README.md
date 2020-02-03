@@ -1,5 +1,5 @@
 # mongo-clay
-This project will be a module  of functions to allow acces to a mongo db and make CRUD Actions
+This project is a  module  of functions to allow acces to a mongo db and make CRUD Actions
 ## Install
 
 npm install mongodb 
