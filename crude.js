@@ -29,12 +29,14 @@ var insertDocument=function(db,coll,doc,callback){
 		callback(result)
 	})
 }
-var findDocuments=function(db, coll,key,projection,callback){
+var findDocuments=function(db, coll,key,projection,options,callback){
 	if(key._id){
 		key._id=new require('mongodb').ObjectId(key._id)
 	}
+	var skip = options.skip || 0
+	var limit = options.limit || 100
 	var collection=db.collection(coll)
-	collection.find(key).project(projection).toArray(function(err,docs){
+	collection.find(key).project(projection).skip(skip).limit(limit).toArray(function(err,docs){
 	//collection.find(key,projection).toArray(function(err,docs){
 		if(err) throw err
 		console.log('findDocuments method has been called')
