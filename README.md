@@ -12,7 +12,7 @@ var clay=require('mongo-clay');
 //set DB 
 clay.set('mongodb://localhost:27017/','dbName');
 //set collection
-var myCollection=clay.Collection('collectionName');
+var myCollection=clay.collection('collectionName');
 ```
 	
 ### Insert Document
