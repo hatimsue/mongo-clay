@@ -30,6 +30,9 @@ class Collection{
 	get document(){
 		return this.document
 	}
+	get insertMany(){
+		return this.insertMany
+	}
 
 
 	find(key,projection,options){
@@ -103,12 +106,27 @@ class Collection{
 				})
 			}catch(e){
 				reject(e)
+				
 			}
 		})
 		
 	}
 	document(data){
 		return new Document({data:data,collection:this})
+	}
+
+	insertMany(docs,options){
+		return new Promise((resolve,reject)=>{
+			crude.connection(this.db.url,this.db.name,(db,client)=>{
+				crude.insertMany(db,this.name,docs,options).then(result=>{
+					resolve(result)
+					client.close()
+				}).catch(err=>{
+					reject(err)
+					client.close()
+				})
+			})
+		})
 	}
 
 }
