@@ -29,6 +29,22 @@ var insertDocument=function(db,coll,doc,callback){
 		callback(result)
 	})
 }
+
+var insertMany = function(db,coll,docs,options){
+	return new Promise((resolve, reject)=>{
+		try{
+			let collection=db.collection(coll)
+			collection.insertMany(docs,options,(err,r)=>{
+				if(err) throw err
+				resolve(r)
+			})
+		}catch(e){
+			reject(e)
+		}
+		
+	})
+	
+}
 var findDocuments=function(db, coll,key,projection,options,callback){
 	if(key._id){
 		key._id=new require('mongodb').ObjectId(key._id)
@@ -97,6 +113,7 @@ module.exports={
 	findDocuments,
 	removeDocument,
 	insertDocument,
+	insertMany,
 	updateDocument,
 	aggregateDocuments,
 	countDocuments,
