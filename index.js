@@ -1,109 +1,132 @@
-"use strict";
-var crude = require('./crude.js');
+/* eslint-disable no-dupe-class-members */
+'use strict'
+var crude = require('./crude.js')
 
 class Clay{
 	constructor(){
 
 	}
 	get set(){
-		return this.set;
+		return this.set
 	}
-	get Collection(){
-		return this.Collection;
+	get collection(){
+		return this.Collection
 	}
 	get find(){
-		return this.find;
+		return this.find
 	}
 	get update(){
-		return this.update;
+		return this.update
 	}
 	get remove(){
-		return this.remove;
+		return this.remove
 	}
 	get aggregate(){
-		return this.aggregate;
+		return this.aggregate
 	}
 	get count(){
-		return this.count;
+		return this.count
 	}
 	set(dbUrl,dbName){
-		this.dbUrl=dbUrl;
-		this.dbName=dbName;
+		this.dbUrl=dbUrl
+		this.dbName=dbName
 	}
-	Collection(modelName){
+	collection(modelName){
 		if(this.dbUrl&&this.dbName){
-			let self=this;
+			let self=this
 			return class{
-				constructor(){
-					this.name=modelName;
+				constructor(data){
+					this.collection=modelName
+					this.data=(data && typeof data == 'object')?data:{}
 				}
 				get save(){
-					return this.save;
+					return this.save
+				}
+				setData(data){
+					for(var a in data){
+						this.data[a]= data[a]
+					}
+				}
+				getData(){
+					return this.data
 				}
 				save(callback){
+					
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-						crude.insertDocument(db,modelName,this,(result)=>{
+						crude.insertDocument(db,modelName,this.data,(result)=>{
 							if(callback){
-								callback(result);
+								callback(result)
 							}
-							client.close();
-						});
-					});
+							client.close()
+						})
+					})
 				}
 				static find(key,projection,callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
 						crude.findDocuments(db,modelName,key,projection,(docs)=>{
 							if(callback){
-								callback(docs);
+								callback(docs)
 							}
-							client.close();
-						});
-					});
+							client.close()
+						})
+					})
 				}
 				static update(key,newKey,callback){
-						crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-							crude.updateDocument(db,modelName,key,newKey,(result)=>{
-								if(callback){
-									callback(result);
-								}
-								client.close();
-							});
-						});
+					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
+						crude.updateDocument(db,modelName,key,newKey,(result)=>{
+							if(callback){
+								callback(result)
+							}
+							client.close()
+						})
+					})
 				}
 				static remove(key,callback){
-						crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-							crude.removeDocument(db,modelName,key,(result)=>{
-								if(callback){
-									callback(result);
-								}
-								client.close();
-							});
-						});
-				}
-				static aggregate(match,group,callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
-						crude.removeDocument(db,modelName,match,group,(docs)=>{
+						crude.removeDocument(db,modelName,key,(result)=>{
 							if(callback){
-								callback(docs);
+								callback(result)
 							}
-							client.close();
-						});
-					});
+							client.close()
+						})
+					})
+				}
+				static aggregate(rules,callback){
+					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
+						crude.aggregateDocuments(db,modelName,rules,(docs)=>{
+							if(callback){
+								callback(docs)
+							}
+							client.close()
+						})
+					})
 				}
 				static count(key,callback){
 					crude.connection(self.dbUrl,self.dbName,(db,client)=>{
 						crude.countDocuments(db,modelName,key,(count)=>{
 							if(callback){
-								callback(count);
+								callback(count)
 							}
-							console.log(count+'no se que pasa');
-							client.close();
-						});
-					});
+							console.log(count+'no se que pasa')
+							client.close()
+						})
+					})
 				}
 			}
 		}else{
-			return false;
+			return false
+		}
+	}
+	saveMany(collectionName,docs,callback){
+		if(this.dbUrl&&this.dbName){
+			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
+				crude.insertDocuments(db,collectionName,docs,(docs)=>{
+					if(callback){
+						callback(docs)
+					}
+					client.close()
+				})
+			})
 		}
 	}
 	find(collectionName,key,projection,callback){
@@ -111,11 +134,11 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.findDocuments(db,collectionName,key,projection,(docs)=>{
 					if(callback){
-						callback(docs);
+						callback(docs)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
 	update(collectionName,key,newKey,callback){
@@ -123,11 +146,11 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.updateDocument(db,collectionName,key,newKey,(result)=>{
 					if(callback){
-						callback(result);
+						callback(result)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 
 	}
@@ -136,23 +159,23 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.removeDocument(db,collectionName,key,(result)=>{
 					if(callback){
-						callback(result);
+						callback(result)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
-	aggregate(collectionName,match,group,callback){
+	aggregate(collectionName,rules,callback){
 		if(this.dbUrl&&this.dbName){
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
-				crude.removeDocument(db,collectionName,match,group,(docs)=>{
+				crude.aggregateDocuments(db,collectionName,rules,(docs)=>{
 					if(callback){
-						callback(docs);
+						callback(docs)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
 	count(collectionName,key,callback){
@@ -160,12 +183,12 @@ class Clay{
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
 				crude.countDocuments(db,collectionName,key,(count)=>{
 					if(callback){
-						callback(count);
+						callback(count)
 					}
-					client.close();
-				});
-			});
+					client.close()
+				})
+			})
 		}
 	}
 }
-module.exports=new Clay();
+module.exports=new Clay()
