@@ -56,7 +56,7 @@ var updateDocument=function(db,coll,key,newKey,callback){
 	}
 	var collection=db.collection(coll)
 	collection.updateOne(key,{$set:newKey},function(err,result){
-		if(err) throw errinstertDocuments
+		if(err) throw err
 		if(result.result.nModified===1){
 			console.log('the doc was updated')
 		}else if(result.result.nModified===0){
