@@ -117,6 +117,18 @@ class Clay{
 			return false
 		}
 	}
+	saveMany(collectionName,docs,callback){
+		if(this.dbUrl&&this.dbName){
+			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
+				crude.insertDocuments(db,collectionName,docs,(docs)=>{
+					if(callback){
+						callback(docs)
+					}
+					client.close()
+				})
+			})
+		}
+	}
 	find(collectionName,key,projection,callback){
 		if(this.dbUrl&&this.dbName){
 			crude.connection(this.dbUrl,this.dbName,(db,client)=>{
