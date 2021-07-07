@@ -29,6 +29,14 @@ var insertDocument=function(db,coll,doc,callback){
 		callback(result)
 	})
 }
+var insertDocuments=function(db,coll,docs,callback){
+	var collection=db.collection(coll)
+	collection.insertMany(docs,function(err,result){
+		if(err) throw err
+		console.log('the docs were inserted')
+		callback(result)
+	})
+}
 var findDocuments=function(db, coll,key,projection,callback){
 	if(key._id){
 		key._id=new require('mongodb').ObjectId(key._id)
@@ -95,6 +103,7 @@ module.exports={
 	findDocuments,
 	removeDocument,
 	insertDocument,
+	insertDocuments,
 	updateDocument,
 	aggregateDocuments,
 	countDocuments,

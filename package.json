@@ -1,6 +1,6 @@
 {
   "name": "mongo-clay",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "this project will be a module of functions to allow acces to a mongo db and do CRUD Actions ",
   "main": "index.js",
   "scripts": {
@@ -16,10 +16,46 @@
     "crude",
     "nodejs"
   ],
-  "author": "hatimsue <hatimsue@gmail.com> (https://github.com/hatimsue/mongo-clay)",
+  "author": {
+    "name": "hatimsue",
+    "email": "hatimsue@gmail.com",
+    "url": "https://github.com/hatimsue/mongo-clay"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hatimsue/mongo-clay/issues"
   },
-  "homepage": "https://github.com/hatimsue/mongo-clay#readme"
+  "homepage": "https://github.com/hatimsue/mongo-clay#readme",
+  "gitHead": "1e2b22d81e77851c4a1cf4560a7d65a7d3910f80",
+  "_id": "mongo-clay@1.1.0",
+  "_nodeVersion": "10.17.0",
+  "_npmVersion": "6.13.7",
+  "dist": {
+    "integrity": "sha512-qiCvEMTl1O+N/k+ikg3q+FNzYIJhnY4yYTVm3db7bLwSFqR/yeXMT1Bhfw2HQEi+oc5ul64ETRi1S55+chuK0w==",
+    "shasum": "5d4afc8a80439c55f9ba74764be2b32b05831186",
+    "tarball": "https://registry.npmjs.org/mongo-clay/-/mongo-clay-1.1.0.tgz",
+    "fileCount": 4,
+    "unpackedSize": 9436,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeOM5wCRA9TVsSAnZWagAAw1UP/2dYow7vuiyydUAiZvAj\nTyqD1NToIfiFV6waVx6GjRGmkQul83kQ3BrDhXPSoyQZKy+V4QAYemmh4DQB\nnbp4zFNjLZ/3q2zrvaC0Sd9LBuf1088sDOA4w1EI9Hk04zBuEXQXwAIZUQZg\nHmy32z8vbT0DAwLK3wmKr8lt5/3FKSThoaUh6i7NxD5rUZt5htyIbei6CSfq\n5ok1f5A0SEJbf3mNFlWzqKImKlXfWPLFLOVf/H60YJEGziZFF3komwBro1qP\ngYyf4vfHdfjiDl9TiGR01VaNHZmq9k4475OteRH9GuJodNbbVcF1iztgdVgh\nppE+w2rzPsJPvAe3lDerkyW4Rh+V4cBdy2TAWZcpgFMi89OoXB+HQadByJkt\npy2bIM4R3yr9U2IyjewP4gnBAyJwC9pA4n9rDGYsZ/WNlJoO2CDrzTK4UNQ6\namnev/RAuluwxjEIHbm6HMjpXfv/8znIhe8y/BmEwmhtk8eBmEhB6Qk7U76s\npSc4ePP7U4t5+NeWgWIAo/1X7x6YJgk8WA8LzHZ3+n33xmrwhz1MVTRgnHr5\nX3Kgb5vXWv4CH0Wir2Zk1b9QIaP1474FglDD+XER7eawsuSpi28GaL5vaAwm\nVyJTq0N1yaMFcGQeD0Wbjleb09rRd22IBWRuaaWxGoywSMb4huGG25WGzzEY\n4uvN\r\n=KX52\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "maintainers": [
+    {
+      "name": "hatimsue",
+      "email": "hatimsue@gmail.com"
+    }
+  ],
+  "_npmUser": {
+    "name": "hatimsue",
+    "email": "hatimsue@gmail.com"
+  },
+  "directories": {},
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/mongo-clay_1.1.0_1580781168030_0.44074529784949834"
+  },
+  "_hasShrinkwrap": false,
+  "_shasum": "5d4afc8a80439c55f9ba74764be2b32b05831186",
+  "_resolved": "https://registry.npmjs.org/mongo-clay/-/mongo-clay-1.1.0.tgz",
+  "_from": "mongo-clay@>=1.0.4 <2.0.0",
+  "readme": "ERROR: No README data found!"
 }
